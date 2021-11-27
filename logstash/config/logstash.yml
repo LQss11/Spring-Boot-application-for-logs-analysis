@@ -1,0 +1,2 @@
+#xpack.monitoring.elasticsearch.username: elastic
+#xpack.monitoring.elasticsearch.password: changeme

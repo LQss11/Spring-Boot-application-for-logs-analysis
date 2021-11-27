@@ -49,7 +49,7 @@ services:
       build:
         context: logstash/
         args:
-          ELK_VERSION: $ELK_VERSION
+          ELK_VERSION: $ELK_VERSION      
       command: logstash -f logstash.conf
       container_name: logstash
       environment:
