@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Welcome</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Welcome</h1>
+      <h2 th:utext="${message}">..!..</h2>
+      
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Specialite</th>
+                    <th>Genre</th>
+                    <th>Ville</th>
+                    <!--th>Actions</th-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="docteur : ${listDocteurs}" scope="row">
+                    <td th:text="${docteur.Prenom}"></td>
+                    <td th:text="${docteur.Nom}"></td>
+                    <td th:text="${docteur.Specialite}"></td>
+                    <td th:text="${docteur.Genre}"></td>
+                    <td th:text="${docteur.Ville}"></td>
+                    <!--td><a th:href="@{/updateDocteur/{id}(id=${docteur.id})}" class="edit" data-toggle="modal"><i
+                            class="material-icons"
+                            data-toggle="tooltip"
+                            title="Edit">&#xE254;</i></a>
+                        <a th:href="@{/deleteDocteur/{id}(id=${docteur.id})}" class="delete" data-toggle="modal"><i
+                                class="material-icons"
+                                data-toggle="tooltip"
+                                title="Delete">&#xE872;</i></a>
+                    </td-->
+                </tr>
+                </tbody>
+            </table>
+         
+      <a th:href="@{/personList}">Person List</a>  
+      
+   </body>
+   
+</html>

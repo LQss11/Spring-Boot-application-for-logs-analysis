@@ -38,6 +38,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- Thymleaf dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>		
 		<!-- Swagger Dependencies -->	
 		<dependency>
 			<groupId>io.springfox</groupId>

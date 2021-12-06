@@ -6,11 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfa.elklogsswaggerrestfulapi.model.Docteur;
@@ -24,7 +26,12 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@RestController
+
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+
+@Controller
 @RequestMapping("/Rest/Api")
 @Api(value="Docteur Methods" , tags="Docteur-Methods")//value and description
 public class DocteurController {
@@ -35,6 +42,46 @@ public class DocteurController {
     @Autowired
     private DocteurService docteurService;
     
+    	// Inject via application.properties
+	@Value("${welcome.message}")
+	private String message;
+
+	@Value("${error.message}")
+	private String errorMessage;
+
+    @GetMapping(value = "/Home")
+	public String index(Model model) {
+        model.addAttribute("listDocteurs", docteurService.GetAllDocteurs());
+		model.addAttribute("message", message);
+		
+		return "index2";
+	}
+
+
+    @GetMapping("/addDocteur")
+    public String addDocteur(Model model) {
+        Docteur docteur = new Docteur();
+        model.addAttribute("docteur", docteur);
+
+        return "addNewDocteur";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------------Get ALL------------------------------------------------------*/
     
     @ApiOperation("Select all docteurs")
@@ -48,6 +95,7 @@ public class DocteurController {
     /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
     
     @GetMapping("/DATGetDocteur")
+    @ResponseBody
     public List<Docteur> GetAllDocteurs()
     {
         logger.info("Getting all Doctors.");
@@ -89,11 +137,13 @@ public class DocteurController {
     /*<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>*/
     
     @PostMapping("/DATPostDocteur")
-    public void addDocteur(@RequestBody List<Docteur> docteur)
+    public String addDocteur(@ModelAttribute("docteur") Docteur docteur)
     {
         logger.info("Adding doctor.");
 
         docteurService.addDocteur(docteur);
+        return "redirect:/Rest/Api/Home";
+
     }
     
     /*-------------------------------------------PUT ONE------------------------------------------------------*/

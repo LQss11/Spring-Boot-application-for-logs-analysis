@@ -23,16 +23,19 @@ public class DocteurService {
                 .forEach(Docteurs::add);
         return Docteurs;
     }
-
+    public List<Docteur> GetAllDocteurs2() {
+        return DocteurRepository.findAll();
+    }
+    
     public Optional<Docteur> getDocteur(Long id)                                //GET ONE
     {
         return DocteurRepository.findById(id);
     }
 
-    public String addDocteur(List<Docteur> Docteur) {                           //POST ONE
+    public String addDocteur(Docteur Docteur) {                           //POST ONE
         
         try {
-            DocteurRepository.saveAll(Docteur);
+            DocteurRepository.save(Docteur);
             return "ajouté avec succès!";
         } catch (Exception e) {
             return "erreur d'ajout";

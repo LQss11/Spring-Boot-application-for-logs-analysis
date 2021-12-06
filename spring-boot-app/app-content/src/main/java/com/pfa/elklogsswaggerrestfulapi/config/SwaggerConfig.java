@@ -5,8 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import com.pfa.elklogsswaggerrestfulapi.controller.DocteurController;
-import com.pfa.elklogsswaggerrestfulapi.controller.PatientController;
+import com.pfa.elklogsswaggerrestfulapi.controller.*;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
