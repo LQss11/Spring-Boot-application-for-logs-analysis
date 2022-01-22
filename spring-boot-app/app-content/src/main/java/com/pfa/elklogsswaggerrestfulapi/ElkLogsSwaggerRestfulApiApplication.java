@@ -11,7 +11,7 @@ public class ElkLogsSwaggerRestfulApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ElkLogsSwaggerRestfulApiApplication.class, args);
-		logger.info("App Start");
+		logger.info("Application Started");
 
 	}
 
