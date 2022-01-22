@@ -17,7 +17,7 @@ docker-compose up --build
 # Quick Test
 Once the application is running and no errors occured due the execution or configuration, you will need to do few things to check whether everything works fine:
 - Try to test one of the APIs through swagger.
-- An index will be generated to be used in Elasticsearch where you will be able to visualize you logs with Kibana.
+- An index with name **Springlogs** will be generated to be used with Elasticsearch where you will be able to visualize you logs with Kibana. (Username: `elastic` | Password: `changeme`)
 - You can also check that the data have been added to you H2 test database .
 # URLs
 | Tool | URL |
@@ -35,5 +35,8 @@ Thos are the default settings of our H2 DB and you can change thos settings insi
 3. User Name: `root`
 4. Password: `root`
 
+# Screenshots
 
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/LQss11/Spring-Boot-application-for-logs-analysis/master/screenshots/kibana.png" title="Logs Discovery">
+</p> 
